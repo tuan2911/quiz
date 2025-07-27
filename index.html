@@ -7,6 +7,21 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Configure MathJax BEFORE loading the main script -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']] // For inline math
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <!-- MathJax CDN for LaTeX rendering -->
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -132,13 +147,7 @@
             font-size: 1.2rem;
             color: #4a5568;
         }
-        .hint-text {
-            font-size: 0.9rem;
-            color: #718096;
-            text-align: center;
-            margin-top: 16px;
-            font-style: italic;
-        }
+        /* Removed hint-text style as hint is removed */
     </style>
 </head>
 <body>
@@ -148,7 +157,7 @@
             <div id="answer-options" class="flex flex-col gap-4">
                 <!-- Answer options will be rendered here -->
             </div>
-            <div class="hint-text" id="hint-text"></div>
+            <!-- Removed hint-text div -->
             <div class="button-group">
                 <button class="btn btn-secondary" id="prev-btn" disabled>Câu trước</button>
                 <button class="btn btn-primary" id="next-btn">Câu tiếp theo</button>
@@ -188,12 +197,12 @@
                         "rationale": "Đây là một câu hỏi, không phải là một khẳng định có thể xác định tính đúng sai.",
                         "isCorrect": false
                     }
-                ],
-                "hint": "Một mệnh đề phải là một câu khẳng định có thể xác định rõ ràng là đúng hoặc sai."
+                ]
+                // Hint removed
             },
             {
                 "question": "Mệnh đề kéo theo $P \\Rightarrow Q$ chỉ sai trong trường hợp nào?",
-                "hint": "Hãy xem xét trường hợp duy nhất mà một lời hứa (Nếu P thì Q) bị phá vỡ.",
+                // Hint removed
                 "answerOptions": [
                     {
                         "text": "$P$ đúng và $Q$ đúng.",
@@ -201,25 +210,25 @@
                         "isCorrect": false
                     },
                     {
-                        "text": "$P$ sai và $Q$ đúng.",
-                        "rationale": "Khi giả thiết sai, mệnh đề kéo theo luôn được coi là đúng, bất kể kết luận như thế nào.",
+                        "text": "$P$ sai và $Q$ sai.", // Changed option 2 text
+                        "rationale": "Khi giả thiết sai, mệnh đề kéo theo vẫn được coi là đúng.",
                         "isCorrect": false
                     },
                     {
                         "text": "$P$ đúng và $Q$ sai.",
-                        "rationale": "Đây là trường hợp duy nhất mà mệnh đề kéo theo bị vi phạm: từ một giả thiết đúng lại suy ra một kết luận sai.",
+                        "rationale": "Đây là trường hợp duy nhất mà mệnh đề kéo theo bị vi phạm: từ một giả thiết đúng lại suy ra một một kết luận sai.",
                         "isCorrect": true
                     },
                     {
-                        "text": "$P$ sai và $Q$ sai.",
-                        "rationale": "Khi giả thiết sai, mệnh đề kéo theo vẫn được coi là đúng.",
+                        "text": "$P$ sai và $Q$ đúng.",
+                        "rationale": "Khi giả thiết sai, mệnh đề kéo theo luôn được coi là đúng, bất kể kết luận như thế nào.",
                         "isCorrect": false
                     }
                 ]
             },
             {
                 "question": "Cho mệnh đề $P$: 'Tứ giác ABCD là hình vuông'. Mệnh đề phủ định $\\overline{P}$ là gì?",
-                "hint": "Mệnh đề phủ định phải bao hàm tất cả các trường hợp mà mệnh đề gốc không xảy ra.",
+                // Hint removed
                 "answerOptions": [
                     {
                         "text": "Tứ giác ABCD không phải là hình vuông.",
@@ -245,7 +254,7 @@
             },
             {
                 "question": "Mệnh đề $Q \\Rightarrow P$ được gọi là gì của mệnh đề $P \\Rightarrow Q$?",
-                "hint": "Hãy nghĩ xem điều gì xảy ra khi bạn hoán đổi vị trí của giả thiết và kết luận.",
+                // Hint removed
                 "answerOptions": [
                     {
                         "text": "Mệnh đề tương đương",
@@ -271,7 +280,7 @@
             },
             {
                 "question": "Trong một định lí có dạng $P \\Rightarrow Q$, $P$ là điều kiện gì để có $Q$?",
-                "hint": "Để kết luận $Q$ xảy ra, liệu giả thiết $P$ có phải là một điều kiện 'đủ' hay 'cần'?",
+                // Hint removed
                 "answerOptions": [
                     {
                         "text": "Điều kiện cần",
@@ -297,7 +306,7 @@
             },
             {
                 "question": "Mệnh đề '$\\forall x \\in \\mathbb{R}, x^2 + 1 > 0$' được phát biểu như thế nào?",
-                "hint": "Ký hiệu $\\forall$ có nghĩa là 'với mọi' hoặc 'cho tất cả'.",
+                // Hint removed
                 "answerOptions": [
                     {
                         "text": "Tồn tại số thực $x$ sao cho $x^2 + 1 > 0$.",
@@ -323,7 +332,7 @@
             },
             {
                 "question": "Mệnh đề '$\\exists x \\in \\mathbb{Z}, x = x^2$' là đúng hay sai?",
-                "hint": "Bạn chỉ cần tìm một số nguyên duy nhất thỏa mãn phương trình.",
+                // Hint removed
                 "answerOptions": [
                     {
                         "text": "Đúng",
@@ -338,8 +347,8 @@
                 ]
             },
             {
-                "question": "Nếu $P$ là 'điều kiện cần và đủ' để có $Q$, mệnh đề nào sau đây thể hiện chính xác mối quan hệ đó?",
-                "hint": "'Cần và đủ' ngụ ý rằng mối quan hệ này có hiệu lực theo cả hai chiều.",
+                "question": "Nếu $P$ là 'điều kiện cần và đủ' để có $Q$， mệnh đề nào sau đây thể hiện chính xác mối quan hệ đó?",
+                // Hint removed
                 "answerOptions": [
                     {
                         "text": "$P \\Rightarrow Q$",
@@ -365,7 +374,7 @@
             },
             {
                 "question": "Phủ định của mệnh đề '$\\forall x \\in \\mathbb{R}, P(x)$' là gì?",
-                "hint": "Nếu một mệnh đề không đúng 'với mọi' phần tử, thì điều đó có nghĩa là gì?",
+                // Hint removed
                 "answerOptions": [
                     {
                         "text": "$\\forall x \\in \\mathbb{R}, \\overline{P(x)}$",
@@ -391,7 +400,7 @@
             },
             {
                 "question": "Xét mệnh đề: 'Nếu một tam giác có hai góc bằng $60^\\circ$ thì tam giác đó là tam giác đều'. Mệnh đề đảo của nó là gì?",
-                "hint": "Hãy hoán đổi giả thiết ('tam giác đều') và kết luận ('có hai góc bằng $60^\\circ$').",
+                // Hint removed
                 "answerOptions": [
                     {
                         "text": "Nếu một tam giác là tam giác đều thì nó có hai góc bằng $60^\\circ$.",
@@ -423,7 +432,7 @@
 
         const questionTextElement = document.getElementById('question-text');
         const answerOptionsElement = document.getElementById('answer-options');
-        const hintTextElement = document.getElementById('hint-text');
+        // const hintTextElement = document.getElementById('hint-text'); // Removed hint element
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
         const quizContentElement = document.getElementById('quiz-content');
@@ -437,7 +446,7 @@
             const question = quizQuestions[currentQuestionIndex];
             questionTextElement.innerHTML = `${currentQuestionIndex + 1}. ${question.question}`;
             answerOptionsElement.innerHTML = '';
-            hintTextElement.textContent = question.hint;
+            // hintTextElement.textContent = question.hint; // Removed hint display
 
             question.answerOptions.forEach((option, index) => {
                 const optionDiv = document.createElement('div');
@@ -460,6 +469,11 @@
 
             updateNavigationButtons();
             applyFeedback();
+
+            // After rendering, typeset the math again
+            if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+                MathJax.typesetPromise([questionTextElement, answerOptionsElement]).catch((err) => console.error("MathJax typesetting failed:", err));
+            }
         }
 
         // Function to handle answer selection
@@ -483,6 +497,8 @@
 
             // Apply feedback immediately after selection
             applyFeedback();
+            // Call updateNavigationButtons after an answer is selected
+            updateNavigationButtons();
         }
 
         // Function to apply correct/incorrect feedback and show rationale
@@ -523,13 +539,18 @@
                     optionDiv.style.pointerEvents = 'auto';
                 }
             });
+            // After applying feedback, typeset the math again for rationales
+            if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+                MathJax.typesetPromise([answerOptionsElement]).catch((err) => console.error("MathJax typesetting failed:", err));
+            }
         }
 
 
         // Function to update navigation button states
         function updateNavigationButtons() {
             prevBtn.disabled = currentQuestionIndex === 0;
-            nextBtn.disabled = userAnswers[currentQuestionIndex] === null && currentQuestionIndex < quizQuestions.length - 1; // Disable next if not answered and not last question
+            // Next button is enabled if an answer is selected OR if it's the last question
+            nextBtn.disabled = userAnswers[currentQuestionIndex] === null && currentQuestionIndex < quizQuestions.length - 1;
 
             if (currentQuestionIndex === quizQuestions.length - 1) {
                 nextBtn.textContent = 'Hoàn thành';
@@ -594,8 +615,18 @@
             renderQuestion();
         });
 
-        // Initial render
-        renderQuestion();
+        // Initial render - wait for MathJax to be ready
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof MathJax !== 'undefined' && MathJax.startup && MathJax.startup.promise) {
+                MathJax.startup.promise.then(() => {
+                    renderQuestion();
+                }).catch((err) => console.error("MathJax startup promise failed:", err));
+            } else {
+                // Fallback if MathJax is not detected or not ready
+                console.warn("MathJax not fully loaded or configured, rendering without typesetting.");
+                renderQuestion();
+            }
+        });
     </script>
 </body>
 </html>
